@@ -1,19 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parque de la Familia - Cochabamba</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'custom-purple': '#8f3a82',
+            'custom-turquoise': '#37a9ad',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .bg-custom-purple { background-color: #8f3a82; }
+    .bg-custom-turquoise { background-color: #37a9ad; }
+    .text-custom-purple { color: #8f3a82; }
+    .text-custom-turquoise { color: #37a9ad; }
+    .border-custom-purple { border-color: #8f3a82; }
+    .border-custom-turquoise { border-color: #37a9ad; }
+    .from-custom-purple { --tw-gradient-from: #8f3a82; }
+    .to-custom-purple { --tw-gradient-to: #8f3a82; }
+    .from-custom-turquoise { --tw-gradient-from: #37a9ad; }
+    .to-custom-turquoise { --tw-gradient-to: #37a9ad; }
+    .hover\:bg-custom-purple:hover { background-color: #8f3a82; }
+    .hover\:bg-custom-turquoise:hover { background-color: #37a9ad; }
+    .hover\:text-custom-purple:hover { color: #8f3a82; }
+    .hover\:text-custom-turquoise:hover { color: #37a9ad; }
+  </style>
 </head>
+
 <body>
   <div id="root"></div>
-  
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  
+
   <script type="text/babel">
     const { useState, useEffect } = React;
     const { Waves, Music, Droplets, Users, Clock, MapPin, Phone, Mail, Menu, X, Heart, Star, Camera, Bike, TreePine, Coffee, IceCream, Gift, Baby, Sunrise, Sunset, Calendar } = lucide;
@@ -21,14 +51,20 @@
     const ParqueFamiliaApp = () => {
       const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
       const [activeSection, setActiveSection] = useState('inicio');
-      
-      // ⭐ CONFIGURACIÓN DE CONTACTO
+      // COORDENADAS DEL PARQUE DE LA FAMILIA (Cochabamba)
+      const PARK_LAT = -17.386385319733318;
+      const PARK_LNG = -66.1627307298124;
+
+      // URL DE EMBED CORREGIDA Y FUNCIONAL: Muestra el pin con la bandera 'iwloc=B'
+      const MAP_EMBED_URL = `https://maps.google.com/maps?q=${PARK_LAT},${PARK_LNG}&t=&z=15&ie=UTF8&iwloc=B&output=embed`;
+
+      // ENLACE DIRECTO CORREGIDO Y FUNCIONAL para abrir en la app/web de Google Maps
+      const MAP_LINK_URL = `https://www.google.com/maps/search/?api=1&query=${PARK_LAT},${PARK_LNG}`;
       const WHATSAPP_NUMBER = '59172777632';
       const CONTACT_EMAIL = 'info@parquedelafamilia.com';
       const CONTACT_PHONE = '+591 4 4234567';
       const CONTACT_ADDRESS = 'Zona Temporal, Cochabamba, Bolivia';
-      
-      // 🎡 ATRACCIONES DEL PARQUE
+
       const attractions = [
         {
           id: 1,
@@ -39,9 +75,9 @@
           horarios: ['18:00', '19:30', '21:00'],
           precio: 'Incluido',
           duracion: '25 minutos',
-          image: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800',
+          image: 'https://www.civitatis.com/f/bolivia/cochabamba/espectaculo-luz-sonido-parque-familia-589x392.jpg',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'blue'
+          color: 'turquoise'
         },
         {
           id: 2,
@@ -52,7 +88,7 @@
           horarios: ['09:00 - 18:00'],
           precio: 'Incluido',
           duracion: 'Todo el día',
-          image: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800',
+          image: '/Juegos.jpg',
           whatsapp: WHATSAPP_NUMBER,
           color: 'purple'
         },
@@ -65,9 +101,9 @@
           horarios: ['06:00 - 20:00'],
           precio: 'Incluido',
           duracion: 'Ilimitado',
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHV0tbGiHIlCnczHQmb8lbeGgLMlvCe4j5Cg&s',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'green'
+          color: 'turquoise'
         },
         {
           id: 4,
@@ -78,9 +114,9 @@
           horarios: ['06:00 - 22:00'],
           precio: 'Incluido',
           duracion: 'Todo el día',
-          image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSODsQyGMCzTskLjrSQya42jCX3HWIIvCT57g&s',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'emerald'
+          color: 'turquoise'
         },
         {
           id: 5,
@@ -93,7 +129,7 @@
           duracion: 'A elección',
           image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'orange'
+          color: 'purple'
         },
         {
           id: 6,
@@ -104,9 +140,9 @@
           horarios: ['Fines de semana'],
           precio: 'Variable',
           duracion: 'Variable',
-          image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800',
+          image: 'https://media-cdn.tripadvisor.com/media/photo-s/0e/44/26/e7/photo0jpg.jpg',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'red'
+          color: 'purple'
         },
         {
           id: 7,
@@ -117,9 +153,9 @@
           horarios: ['06:00 - 22:00'],
           precio: 'Incluido',
           duracion: 'Ilimitado',
-          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
+          image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbSp7i0G9VHNEdO-jKSFXeGjX3xA7x1C3ktQ&s',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'indigo'
+          color: 'turquoise'
         },
         {
           id: 8,
@@ -130,9 +166,9 @@
           horarios: ['07:00 - 18:00'],
           precio: 'Incluido',
           duracion: '1-2 horas',
-          image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800',
+          image: 'https://dondebolivia.com/wp-content/uploads/cache/images/Costanera-Cochabamba-Foto-Fernando-Cartagena_LRZIMA20150910_0053_4/Costanera-Cochabamba-Foto-Fernando-Cartagena_LRZIMA20150910_0053_4-2267751331.jpg',
           whatsapp: WHATSAPP_NUMBER,
-          color: 'teal'
+          color: 'turquoise'
         }
       ];
 
@@ -163,94 +199,146 @@
 
       const getColorClasses = (color) => {
         const colors = {
-          blue: 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700',
-          purple: 'from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700',
-          green: 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700',
-          emerald: 'from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700',
-          orange: 'from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700',
-          red: 'from-red-500 to-red-600 hover:from-red-600 hover:to-red-700',
-          indigo: 'from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700',
-          teal: 'from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700'
+          turquoise: 'from-custom-turquoise to-custom-turquoise hover:opacity-90',
+          purple: 'from-custom-purple to-custom-purple hover:opacity-90'
         };
-        return colors[color] || colors.blue;
+        return colors[color] || colors.turquoise;
       };
 
       const getBgColorClass = (color) => {
         const colors = {
-          blue: 'bg-blue-100',
-          purple: 'bg-purple-100',
-          green: 'bg-green-100',
-          emerald: 'bg-emerald-100',
-          orange: 'bg-orange-100',
-          red: 'bg-red-100',
-          indigo: 'bg-indigo-100',
-          teal: 'bg-teal-100'
+          turquoise: 'bg-cyan-100',
+          purple: 'bg-purple-100'
         };
-        return colors[color] || colors.blue;
+        return colors[color] || colors.turquoise;
       };
 
       const getTextColorClass = (color) => {
         const colors = {
-          blue: 'text-blue-600',
-          purple: 'text-purple-600',
-          green: 'text-green-600',
-          emerald: 'text-emerald-600',
-          orange: 'text-orange-600',
-          red: 'text-red-600',
-          indigo: 'text-indigo-600',
-          teal: 'text-teal-600'
+          turquoise: 'text-custom-turquoise',
+          purple: 'text-custom-purple'
         };
-        return colors[color] || colors.blue;
+        return colors[color] || colors.turquoise;
       };
 
       return (
         <div className="min-h-screen bg-white">
-          {/* Navbar */}
           <nav className="bg-white shadow-lg fixed w-full top-0 z-40">
             <div className="container mx-auto px-4">
               <div className="flex justify-between items-center h-20">
-                <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('inicio')}>
-                  <i data-lucide="heart" className="w-9 h-9 text-green-600"></i>
-                  <div>
-                    <h1 className="text-2xl font-bold text-gray-800">Parque de la Familia</h1>
-                    <p className="text-xs text-gray-500">Cochabamba, Bolivia</p>
+                {/* Logo mejorado */}
+                <div
+                  className="flex items-center gap-3 cursor-pointer group"
+                  onClick={() => scrollToSection('inicio')}
+                >
+                  <div className="relative flex items-center">
+                    <img
+                      src="/Logo.png"
+                      alt="Logo Parque de la Familia"
+                      className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-lg font-bold text-gray-800 leading-tight group-hover:text-custom-purple transition-colors">
+                      Parque de la Familia
+                    </span>
+                    <span className="text-xs text-gray-500 font-medium">
+                      Cochabamba, Bolivia
+                    </span>
                   </div>
                 </div>
 
-                {/* Desktop Menu */}
+                {/* Menú desktop */}
                 <div className="hidden md:flex items-center gap-8">
-                  <button onClick={() => scrollToSection('inicio')} className={`font-semibold transition-colors ${activeSection === 'inicio' ? 'text-green-600' : 'text-gray-600 hover:text-green-600'}`}>
+                  <button
+                    onClick={() => scrollToSection('inicio')}
+                    className={`font-semibold transition-colors ${activeSection === 'inicio' ? 'text-custom-purple' : 'text-gray-600 hover:text-custom-purple'}`}
+                  >
                     Inicio
                   </button>
-                  <button onClick={() => scrollToSection('atracciones')} className={`font-semibold transition-colors ${activeSection === 'atracciones' ? 'text-green-600' : 'text-gray-600 hover:text-green-600'}`}>
+                  <button
+                    onClick={() => scrollToSection('atracciones')}
+                    className={`font-semibold transition-colors ${activeSection === 'atracciones' ? 'text-custom-purple' : 'text-gray-600 hover:text-custom-purple'}`}
+                  >
                     Atracciones
                   </button>
-                  <button onClick={() => scrollToSection('horarios')} className={`font-semibold transition-colors ${activeSection === 'horarios' ? 'text-green-600' : 'text-gray-600 hover:text-green-600'}`}>
+                  <button
+                    onClick={() => scrollToSection('horarios')}
+                    className={`font-semibold transition-colors ${activeSection === 'horarios' ? 'text-custom-purple' : 'text-gray-600 hover:text-custom-purple'}`}
+                  >
                     Horarios
                   </button>
-                  <button onClick={() => scrollToSection('nosotros')} className={`font-semibold transition-colors ${activeSection === 'nosotros' ? 'text-green-600' : 'text-gray-600 hover:text-green-600'}`}>
+                  <button
+                    onClick={() => scrollToSection('nosotros')}
+                    className={`font-semibold transition-colors ${activeSection === 'nosotros' ? 'text-custom-purple' : 'text-gray-600 hover:text-custom-purple'}`}
+                  >
                     Nosotros
                   </button>
-                  <button onClick={() => scrollToSection('contacto')} className={`font-semibold transition-colors ${activeSection === 'contacto' ? 'text-green-600' : 'text-gray-600 hover:text-green-600'}`}>
+                  <button
+                    onClick={() => scrollToSection('contacto')}
+                    className={`font-semibold transition-colors ${activeSection === 'contacto' ? 'text-custom-purple' : 'text-gray-600 hover:text-custom-purple'}`}
+                  >
                     Contacto
                   </button>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                  <i data-lucide={mobileMenuOpen ? "x" : "menu"} className="w-7 h-7"></i>
+                {/* Botón menú móvil */}
+                <button
+                  className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-600"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    {mobileMenuOpen ? (
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
                 </button>
               </div>
 
-              {/* Mobile Menu */}
+              {/* Menú móvil */}
               {mobileMenuOpen && (
                 <div className="md:hidden py-4 border-t">
                   <div className="flex flex-col gap-4">
-                    <button onClick={() => scrollToSection('inicio')} className="text-left font-semibold text-gray-600 hover:text-green-600">Inicio</button>
-                    <button onClick={() => scrollToSection('atracciones')} className="text-left font-semibold text-gray-600 hover:text-green-600">Atracciones</button>
-                    <button onClick={() => scrollToSection('horarios')} className="text-left font-semibold text-gray-600 hover:text-green-600">Horarios</button>
-                    <button onClick={() => scrollToSection('nosotros')} className="text-left font-semibold text-gray-600 hover:text-green-600">Nosotros</button>
-                    <button onClick={() => scrollToSection('contacto')} className="text-left font-semibold text-gray-600 hover:text-green-600">Contacto</button>
+                    <button
+                      onClick={() => scrollToSection('inicio')}
+                      className="text-left font-semibold text-gray-600 hover:text-custom-purple py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      Inicio
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('atracciones')}
+                      className="text-left font-semibold text-gray-600 hover:text-custom-purple py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      Atracciones
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('horarios')}
+                      className="text-left font-semibold text-gray-600 hover:text-custom-purple py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      Horarios
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('nosotros')}
+                      className="text-left font-semibold text-gray-600 hover:text-custom-purple py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      Nosotros
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('contacto')}
+                      className="text-left font-semibold text-gray-600 hover:text-custom-purple py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      Contacto
+                    </button>
                   </div>
                 </div>
               )}
@@ -258,69 +346,55 @@
           </nav>
 
           <div className="mt-20">
-            {/* Hero Section */}
-            <section id="inicio" className="relative bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white py-32 overflow-hidden">
+            <section id="inicio" className="relative bg-custom-purple text-white py-32 overflow-hidden">
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
+                <div className="absolute top-10 left-10 w-72 h-72 bg-custom-turquoise rounded-full blur-3xl"></div>
+                <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full blur-3xl" style={{backgroundColor: '#b35ca8'}}></div>
               </div>
               <div className="container mx-auto px-4 text-center relative z-10">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Bienvenidos al Parque de la Familia</h1>
-                <p className="text-xl md:text-2xl mb-8 text-green-100 max-w-3xl mx-auto">
+                <h1 className="text-5xl md:text-7xl font-bold mb-6">Bienvenidos al Parque de la Familia</h1>
+                <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
                   El espacio verde más grande de Cochabamba, donde la naturaleza y el entretenimiento se unen para crear momentos inolvidables
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <button 
-                    onClick={() => scrollToSection('atracciones')}
-                    className="bg-white text-green-600 hover:bg-green-50 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105"
-                  >
+                  <button onClick={() => scrollToSection('atracciones')} className="bg-custom-turquoise hover:opacity-90 px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 text-white">
                     Explorar Atracciones
                   </button>
-                  <button 
-                    onClick={() => scrollToSection('horarios')}
-                    className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-full text-lg font-bold transition-all"
-                  >
+                  <button onClick={() => scrollToSection('horarios')} className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-custom-purple px-8 py-4 rounded-full text-lg font-bold transition-all">
                     Ver Horarios
                   </button>
                 </div>
-                
-                {/* Stats */}
+
                 <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
                   <div className="text-center">
                     <div className="text-4xl font-bold mb-2">30+</div>
-                    <div className="text-green-200 text-sm">Hectáreas Verdes</div>
+                    <div className="opacity-80 text-sm">Hectáreas Verdes</div>
                   </div>
                   <div className="text-center">
                     <div className="text-4xl font-bold mb-2">8</div>
-                    <div className="text-green-200 text-sm">Atracciones</div>
+                    <div className="opacity-80 text-sm">Atracciones</div>
                   </div>
                   <div className="text-center">
                     <div className="text-4xl font-bold mb-2">100K+</div>
-                    <div className="text-green-200 text-sm">Visitantes/Año</div>
+                    <div className="opacity-80 text-sm">Visitantes/Año</div>
                   </div>
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
             </section>
 
-            {/* Atracciones Section */}
             <section id="atracciones" className="py-24 bg-white">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Nuestras Atracciones</h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Diversión y entretenimiento para toda la familia en un ambiente natural único
-                  </p>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">Diversión y entretenimiento para toda la familia en un ambiente natural único</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {attractions.map(attraction => (
                     <div key={attraction.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
                       <div className="h-56 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
-                        <img 
-                          src={attraction.image} 
-                          alt={attraction.name} 
-                          className="w-full h-full object-cover"
+                        <img src={attraction.image} alt={attraction.name} className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center ${getBgColorClass(attraction.color)}"><i data-lucide="${attraction.icon}" class="w-20 h-20 ${getTextColorClass(attraction.color)}"></i></div>`;
@@ -335,7 +409,7 @@
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">{attraction.name}</h3>
                         <p className="text-gray-600 mb-4">{attraction.description}</p>
                         <p className="text-sm text-gray-500 mb-4">{attraction.details}</p>
-                        
+
                         <div className="space-y-2 mb-4">
                           <div className="flex items-center gap-2 text-sm text-gray-600">
                             <i data-lucide="clock" className="w-4 h-4"></i>
@@ -349,10 +423,7 @@
                           </div>
                         </div>
 
-                        <button
-                          onClick={() => handleContactWhatsApp(attraction)}
-                          className={`w-full bg-gradient-to-r ${getColorClasses(attraction.color)} text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg font-semibold`}
-                        >
+                        <button onClick={() => handleContactWhatsApp(attraction)} className={`w-full bg-gradient-to-r ${getColorClasses(attraction.color)} text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg font-semibold`}>
                           <i data-lucide="phone" className="w-5 h-5"></i>
                           Más Información
                         </button>
@@ -363,20 +434,17 @@
               </div>
             </section>
 
-            {/* Horarios Section */}
-            <section id="horarios" className="py-24 bg-gradient-to-br from-green-50 to-emerald-50">
+            <section id="horarios" className="py-24 bg-gradient-to-br from-purple-50 to-cyan-50">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Horarios de Atención</h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Planifica tu visita conociendo nuestros horarios y eventos especiales
-                  </p>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">Planifica tu visita conociendo nuestros horarios y eventos especiales</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                   <div className="bg-white p-8 rounded-2xl shadow-lg">
-                    <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <i data-lucide="sunrise" className="w-8 h-8 text-green-600"></i>
+                    <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <i data-lucide="sunrise" className="w-8 h-8 text-custom-purple"></i>
                     </div>
                     <h3 className="text-2xl font-bold text-center mb-4">Días de Semana</h3>
                     <div className="space-y-3">
@@ -384,15 +452,13 @@
                         <span className="font-semibold text-gray-700">Lunes - Viernes</span>
                         <span className="text-gray-600">06:00 - 22:00</span>
                       </div>
-                      <div className="text-sm text-gray-500 text-center mt-4">
-                        Ideal para caminatas matutinas y ejercicio
-                      </div>
+                      <div className="text-sm text-gray-500 text-center mt-4">Ideal para caminatas matutinas y ejercicio</div>
                     </div>
                   </div>
 
                   <div className="bg-white p-8 rounded-2xl shadow-lg">
-                    <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <i data-lucide="sunset" className="w-8 h-8 text-blue-600"></i>
+                    <div className="bg-cyan-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <i data-lucide="sunset" className="w-8 h-8 text-custom-turquoise"></i>
                     </div>
                     <h3 className="text-2xl font-bold text-center mb-4">Fines de Semana</h3>
                     <div className="space-y-3">
@@ -400,14 +466,12 @@
                         <span className="font-semibold text-gray-700">Sábado - Domingo</span>
                         <span className="text-gray-600">06:00 - 23:00</span>
                       </div>
-                      <div className="text-sm text-gray-500 text-center mt-4">
-                        Horario extendido con eventos especiales
-                      </div>
+                      <div className="text-sm text-gray-500 text-center mt-4">Horario extendido con eventos especiales</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-8 rounded-2xl shadow-xl mt-12 max-w-4xl mx-auto">
+                <div className="bg-custom-purple text-white p-8 rounded-2xl shadow-xl mt-12 max-w-4xl mx-auto">
                   <div className="flex items-center gap-4 mb-4">
                     <i data-lucide="calendar" className="w-10 h-10"></i>
                     <h3 className="text-2xl font-bold">Shows de Aguas Danzantes</h3>
@@ -427,21 +491,16 @@
                       <div className="text-sm">Función especial</div>
                     </div>
                   </div>
-                  <div className="mt-4 text-sm text-center text-green-100">
-                    * Duración: 25 minutos • Sujeto a condiciones climáticas
-                  </div>
+                  <div className="mt-4 text-sm text-center opacity-80">* Duración: 25 minutos • Sujeto a condiciones climáticas</div>
                 </div>
               </div>
             </section>
 
-            {/* Nosotros Section */}
             <section id="nosotros" className="py-24 bg-white">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Acerca del Parque</h2>
-                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Un espacio creado para el bienestar y la convivencia familiar
-                  </p>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">Un espacio creado para el bienestar y la convivencia familiar</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
@@ -454,24 +513,45 @@
                       Con más de 30 hectáreas de áreas verdes, infraestructura moderna y atracciones para todas las edades, nos hemos convertido en el destino favorito de miles de familias que buscan un lugar seguro y acogedor para crear recuerdos inolvidables.
                     </p>
                     <div className="grid grid-cols-2 gap-6">
-                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl">
-                        <div className="text-4xl font-bold text-green-600 mb-2">30+</div>
+                      <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                        <div className="text-4xl font-bold text-custom-purple mb-2">30+</div>
                         <div className="text-gray-600">Hectáreas</div>
                       </div>
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">100K+</div>
+                       <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl">
+                        <div className="text-4xl font-bold text-custom-turquoise mb-2">100K+</div>
                         <div className="text-gray-600">Visitantes/Año</div>
                       </div>
                     </div>
                   </div>
-                  <div className="bg-gradient-to-br from-green-600 to-emerald-700 p-8 rounded-2xl text-white">
+                   <div className="bg-custom-purple p-8 rounded-2xl text-white">
                     <h3 className="text-2xl font-bold mb-6">¿Por Qué Visitarnos?</h3>
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
-                        <i data-lucide="star" className="w-6 h-6 text-green-200 flex-shrink-0 mt-1"></i>
+                        <i data-lucide="star" className="w-6 h-6 text-custom-turquoise flex-shrink-0 mt-1"></i>
                         <div>
                           <h4 className="font-bold mb-1">Ubicación Central</h4>
-                          <p className="text-green-100 text-sm">Fácil acceso desde cualquier zona de la ciudad</p>
+                          <p className="opacity-90 text-sm">Fácil acceso desde cualquier zona de la ciudad</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <i data-lucide="star" className="w-6 h-6 text-custom-turquoise flex-shrink-0 mt-1"></i>
+                        <div>
+                          <h4 className="font-bold mb-1">Seguridad Garantizada</h4>
+                          <p className="opacity-90 text-sm">Personal de seguridad y cámaras en todo el parque</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <i data-lucide="star" className="w-6 h-6 text-custom-turquoise flex-shrink-0 mt-1"></i>
+                        <div>
+                          <h4 className="font-bold mb-1">Espacios Inclusivos</h4>
+                          <p className="opacity-90 text-sm">Accesibilidad para personas con movilidad reducida</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <i data-lucide="star" className="w-6 h-6 text-custom-turquoise flex-shrink-0 mt-1"></i>
+                        <div>
+                          <h4 className="font-bold mb-1">Ambiente Familiar</h4>
+                          <p className="opacity-90 text-sm">Diseñado pensando en la comodidad de toda la familia</p>
                         </div>
                       </div>
                     </div>
@@ -480,8 +560,7 @@
               </div>
             </section>
 
-            {/* Contacto Section */}
-            <section id="contacto" className="py-24 bg-gradient-to-br from-gray-50 to-green-50">
+            <section id="contacto" className="py-24 bg-gradient-to-br from-gray-50 to-purple-50">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Contáctanos</h2>
@@ -500,7 +579,7 @@
                     <p className="text-sm text-gray-500 mt-2">Lun - Dom: 9:00 - 18:00</p>
                   </div>
 
-                  <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all">
+                   <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all">
                     <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <i data-lucide="mail" className="w-7 h-7 text-blue-600"></i>
                     </div>
@@ -511,7 +590,7 @@
 
                   <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all">
                     <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <i data-lucide="map-pin" className="w-7 h-7 text-purple-600"></i>
+                      <i data-lucide="map-pin" className="w-7 h-7 text-custom-purple"></i>
                     </div>
                     <h3 className="font-bold text-lg mb-2">Ubicación</h3>
                     <p className="text-gray-600">{CONTACT_ADDRESS}</p>
@@ -522,9 +601,9 @@
                 <div className="text-center mt-12">
                   <button
                     onClick={() => window.open(`https://wa.me/${WHATSAPP_NUMBER}`, '_blank')}
-                    className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-10 py-4 rounded-full text-lg font-bold flex items-center gap-3 mx-auto transition-all shadow-xl hover:shadow-2xl hover:scale-105"
+                    className="bg-custom-purple hover:opacity-90 text-white px-10 py-4 rounded-full text-lg font-bold flex items-center gap-3 mx-auto transition-all shadow-xl hover:shadow-2xl hover:scale-105"
                   >
-                    <i data-lucide="phone" className="w-6 h-6"></i>
+                    <i data-lucide="phone" className="w-6 h-6 "></i>
                     Chatea con Nosotros en WhatsApp
                   </button>
                 </div>
@@ -532,11 +611,11 @@
                 {/* Mapa Informativo */}
                 <div className="mt-16 bg-white p-8 rounded-2xl shadow-lg max-w-6xl mx-auto">
                   <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">Cómo Llegar</h3>
-                  
-                  {/* Mapa de Google */}
+
+                  {/* Mapa de Google - CORREGIDO AHORA FUNCIONA CON PIN */}
                   <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
-                    <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15224.978794463033!2d-66.1568866!3d-17.4418902!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e3742c8ed91a17%3A0x9c37f74e2a8b5e0b!2sParque%20de%20las%20Familias!5e0!3m2!1ses!2sbo!4v1731445000000!5m2!1ses!2sbo"
+                    <iframe
+                      src={MAP_EMBED_URL}
                       width="100%"
                       height="450"
                       style={{ border: 0 }}
@@ -549,17 +628,16 @@
 
                   <div className="text-center mb-6">
                     <a
-                      href="https://maps.app.goo.gl/kfgusWjDs64TmMDm7"
+                      href={MAP_LINK_URL} /* Usando el enlace directo real */
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center gap-2 bg-custom-turquoise hover:opacity-90 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-lg hover:shadow-xl"
                     >
                       <i data-lucide="map-pin" className="w-5 h-5"></i>
                       Abrir en Google Maps
                     </a>
                   </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
+                 <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-bold mb-3 text-gray-700">En Transporte Público</h4>
                       <ul className="space-y-2 text-gray-600 text-sm">
@@ -599,7 +677,7 @@
               </div>
             </section>
 
-            {/* Footer */}
+             {/* Footer */}
             <footer className="bg-gray-900 text-white py-12">
               <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-4 gap-8 mb-8">
@@ -612,7 +690,7 @@
                       El espacio verde más grande de Cochabamba, creado para el disfrute de toda la familia.
                     </p>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold mb-4">Navegación</h4>
                     <ul className="space-y-2 text-sm">
@@ -622,7 +700,7 @@
                       <li><button onClick={() => scrollToSection('nosotros')} className="text-gray-400 hover:text-white transition-colors">Nosotros</button></li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold mb-4">Atracciones Destacadas</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
@@ -632,7 +710,7 @@
                       <li>Eventos Culturales</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-bold mb-4">Contacto</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
@@ -642,7 +720,7 @@
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="border-t border-gray-800 pt-8 text-center">
                   <p className="text-sm text-gray-500">© 2025 Parque de la Familia - Cochabamba. Todos los derechos reservados.</p>
                   <p className="text-xs text-gray-600 mt-2">Un espacio público para el bienestar de todos los cochabambinos</p>
@@ -656,10 +734,11 @@
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<ParqueFamiliaApp />);
-    
+
     setTimeout(() => {
       lucide.createIcons();
     }, 100);
   </script>
 </body>
+
 </html>
