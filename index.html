@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,15 +19,36 @@
     }
   </script>
   <style>
-    .bg-custom-purple { background-color: #8f3a82; }
-    .bg-custom-turquoise { background-color: #37a9ad; }
-    .text-custom-purple { color: #8f3a82; }
-    .text-custom-turquoise { color: #37a9ad; }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 40% 90%; }
-      100% { background-position:50% 50%; }
+    .bg-custom-purple {
+      background-color: #8f3a82;
     }
+
+    .bg-custom-turquoise {
+      background-color: #37a9ad;
+    }
+
+    .text-custom-purple {
+      color: #8f3a82;
+    }
+
+    .text-custom-turquoise {
+      color: #37a9ad;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 40% 90%;
+      }
+
+      100% {
+        background-position: 50% 50%;
+      }
+    }
+
     .animated-gradient {
       background: linear-gradient(135deg, #8f3a82, #37a9ad, #b35ca8, #8f3a82);
       background-size: 100% 300%;
@@ -34,6 +56,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="root"></div>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -80,7 +103,7 @@
             { type: 'image', url: 'aguas2.jpg' },
             { type: 'image', url: 'aguas3.jpg' },
             { type: 'video', url: '/aguas.mp4' },
-            
+
           ],
           whatsapp: WHATSAPP_NUMBER,
           color: 'turquoise'
@@ -95,12 +118,12 @@
           precio: 'Incluido',
           duracion: 'Todo el día',
           media: [{ type: 'image', url: '/Juegos.jpg' },
-            { type: 'image', url: '/juego2.jpg' },
-            { type: 'image', url: '/juego3.jpg' },
-            { type: 'image', url: '/juego4.jpg' },
-            { type: 'image', url: '/juego5.jpg' },
-            { type: 'image', url: '/juego6.jpg' }
-            
+          { type: 'image', url: '/juego2.jpg' },
+          { type: 'image', url: '/juego3.jpg' },
+          { type: 'image', url: '/juego4.jpg' },
+          { type: 'image', url: '/juego5.jpg' },
+          { type: 'image', url: '/juego6.jpg' }
+
           ],
           whatsapp: WHATSAPP_NUMBER,
           color: 'purple'
@@ -141,7 +164,7 @@
           precio: 'Variable',
           duracion: 'A elección',
           media: [{ type: 'image', url: 'Snacksjpg.jpg' },
-            
+
           ],
           whatsapp: WHATSAPP_NUMBER,
           color: 'purple'
@@ -156,8 +179,8 @@
           precio: 'Variable',
           duracion: 'Variable',
           media: [{ type: 'image', url: 'https://media-cdn.tripadvisor.com/media/photo-s/0e/44/26/e7/photo0jpg.jpg' },
-            { type: 'video', url: '/eventos.mp4' },
-            { type: 'image', url: '/evento2.webp' }
+          { type: 'video', url: '/eventos.mp4' },
+          { type: 'image', url: '/evento2.webp' }
           ],
           whatsapp: WHATSAPP_NUMBER,
           color: 'purple'
@@ -285,8 +308,8 @@
             <section id="inicio" className="relative animated-gradient text-white py-32 overflow-hidden">
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+                <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
               </div>
               <div className="container mx-auto px-4 text-center relative z-10">
                 <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">Bienvenidos al Parque de la Familia</h1>
@@ -323,7 +346,7 @@
                   {attractions.map(attraction => {
                     const firstMedia = attraction.media[0];
                     const isFirstVideo = firstMedia.type === 'video';
-                    
+
                     return (
                       <div key={attraction.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
                         <div className="h-56 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden relative group cursor-pointer" onClick={() => openLightbox(attraction.media, 0)}>
@@ -349,32 +372,32 @@
                             </div>
                           </div>
                         </div>
-                      <div className="p-6">
-                        <div className={`${getBgColorClass(attraction.color)} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>
-                          <i data-lucide={attraction.icon} className={`w-6 h-6 ${getTextColorClass(attraction.color)}`}></i>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{attraction.name}</h3>
-                        <p className="text-gray-600 mb-4">{attraction.description}</p>
-                        <p className="text-sm text-gray-500 mb-4">{attraction.details}</p>
-                        <div className="space-y-2 mb-4">
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <i data-lucide="clock" className="w-4 h-4"></i>
-                            <span className="font-semibold">Horarios:</span>
-                            <span>{attraction.horarios.join(', ')}</span>
+                        <div className="p-6">
+                          <div className={`${getBgColorClass(attraction.color)} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>
+                            <i data-lucide={attraction.icon} className={`w-6 h-6 ${getTextColorClass(attraction.color)}`}></i>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <i data-lucide="gift" className="w-4 h-4"></i>
-                            <span className="font-semibold">Precio:</span>
-                            <span>{attraction.precio}</span>
+                          <h3 className="text-2xl font-bold text-gray-800 mb-2">{attraction.name}</h3>
+                          <p className="text-gray-600 mb-4">{attraction.description}</p>
+                          <p className="text-sm text-gray-500 mb-4">{attraction.details}</p>
+                          <div className="space-y-2 mb-4">
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <i data-lucide="clock" className="w-4 h-4"></i>
+                              <span className="font-semibold">Horarios:</span>
+                              <span>{attraction.horarios.join(', ')}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <i data-lucide="gift" className="w-4 h-4"></i>
+                              <span className="font-semibold">Precio:</span>
+                              <span>{attraction.precio}</span>
+                            </div>
                           </div>
+                          <button onClick={() => handleContactWhatsApp(attraction)} className={`w-full bg-gradient-to-r ${getColorClasses(attraction.color)} text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg font-semibold`}>
+                            <i data-lucide="phone" className="w-5 h-5"></i>
+                            Más Información
+                          </button>
                         </div>
-                        <button onClick={() => handleContactWhatsApp(attraction)} className={`w-full bg-gradient-to-r ${getColorClasses(attraction.color)} text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg font-semibold`}>
-                          <i data-lucide="phone" className="w-5 h-5"></i>
-                          Más Información
-                        </button>
                       </div>
-                    </div>
-                  );
+                    );
                   })}
                 </div>
               </div>
@@ -405,10 +428,10 @@
                       </div>
                     ) : (
                       currentGallery[currentImageIndex] && (
-                        <img 
-                          src={currentGallery[currentImageIndex].url} 
-                          alt={`Media ${currentImageIndex + 1}`} 
-                          className="max-w-full max-h-[75vh] w-auto h-auto object-contain rounded-lg shadow-2xl" 
+                        <img
+                          src={currentGallery[currentImageIndex].url}
+                          alt={`Media ${currentImageIndex + 1}`}
+                          className="max-w-full max-h-[75vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
                         />
                       )
                     )}
@@ -418,9 +441,9 @@
                       <p className="text-white text-lg mb-3">{currentImageIndex + 1} / {currentGallery.length}</p>
                       <div className="flex justify-center gap-2 flex-wrap max-w-md">
                         {currentGallery.map((item, index) => (
-                          <button 
-                            key={index} 
-                            onClick={() => setCurrentImageIndex(index)} 
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
                             className={`relative w-3 h-3 rounded-full transition-all ${index === currentImageIndex ? 'bg-white w-8' : 'bg-gray-500 hover:bg-gray-400'}`}
                           >
                           </button>
@@ -511,10 +534,10 @@
                     <h3 className="text-2xl font-bold mb-6">¿Por Qué Visitarnos?</h3>
                     <div className="space-y-4">
                       {[
-                        {title: 'Ubicación Central', desc: 'Fácil acceso desde cualquier zona de la ciudad'},
-                        {title: 'Seguridad Garantizada', desc: 'Personal de seguridad y cámaras en todo el parque'},
-                        {title: 'Espacios Inclusivos', desc: 'Accesibilidad para personas con movilidad reducida'},
-                        {title: 'Ambiente Familiar', desc: 'Diseñado pensando en la comodidad de toda la familia'}
+                        { title: 'Ubicación Central', desc: 'Fácil acceso desde cualquier zona de la ciudad' },
+                        { title: 'Seguridad Garantizada', desc: 'Personal de seguridad y cámaras en todo el parque' },
+                        { title: 'Espacios Inclusivos', desc: 'Accesibilidad para personas con movilidad reducida' },
+                        { title: 'Ambiente Familiar', desc: 'Diseñado pensando en la comodidad de toda la familia' }
                       ].map((item, i) => (
                         <div key={i} className="flex items-start gap-3">
                           <i data-lucide="star" className="w-6 h-6 text-custom-turquoise flex-shrink-0 mt-1"></i>
@@ -538,9 +561,9 @@
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                   {[
-                    {icon: 'phone', color: 'green', title: 'Teléfono', info: CONTACT_PHONE, extra: 'Lun - Dom: 9:00 - 18:00'},
-                    {icon: 'mail', color: 'blue', title: 'Email', info: CONTACT_EMAIL, extra: 'Respuesta en 24 horas'},
-                    {icon: 'map-pin', color: 'purple', title: 'Ubicación', info: CONTACT_ADDRESS, extra: 'Ven a visitarnos'}
+                    { icon: 'phone', color: 'green', title: 'Teléfono', info: CONTACT_PHONE, extra: 'Lun - Dom: 9:00 - 18:00' },
+                    { icon: 'mail', color: 'blue', title: 'Email', info: CONTACT_EMAIL, extra: 'Respuesta en 24 horas' },
+                    { icon: 'map-pin', color: 'purple', title: 'Ubicación', info: CONTACT_ADDRESS, extra: 'Ven a visitarnos' }
                   ].map((contact, i) => (
                     <div key={i} className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all">
                       <div className={`bg-${contact.color}-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}>
@@ -636,9 +659,27 @@
                     </ul>
                   </div>
                 </div>
-                <div className="border-t border-gray-800 pt-8 text-center">
-                  <p className="text-sm text-gray-500">© 2025 Parque de la Familia - Cochabamba. Todos los derechos reservados.</p>
-                  <p className="text-xs text-gray-600 mt-2">Un espacio público para el bienestar de todos los cochabambinos</p>
+
+                {/* REDES SOCIALES Y COPYRIGHT */}
+                <div className="border-t border-gray-800 pt-8">
+                  <div className="flex justify-center gap-6 mb-6">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                      <i data-lucide="facebook" className="w-6 h-6"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                      <i data-lucide="instagram" className="w-6 h-6"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
+                      <i data-lucide="twitter" className="w-6 h-6"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="YouTube">
+                      <i data-lucide="youtube" className="w-6 h-6"></i>
+                    </a>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm text-gray-500">© 2025 Parque de la Familia - Cochabamba. Todos los derechos reservados.</p>
+                    <p className="text-xs text-gray-600 mt-2">Un espacio público para el bienestar de todos los cochabambinos</p>
+                  </div>
                 </div>
               </div>
             </footer>
@@ -652,4 +693,5 @@
     setTimeout(() => lucide.createIcons(), 100);
   </script>
 </body>
+
 </html>
